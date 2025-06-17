@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Princilla Abena Koranteng - Data Analyst</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 50%, #0a0a0a 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid #7c3aed;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #a855f7;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #a855f7;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #a855f7;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text h2 {
+            font-size: 1.5rem;
+            color: #a855f7;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #cccccc;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(168, 85, 247, 0.3);
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .profile-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            font-size: 4rem;
+            font-weight: bold;
+            box-shadow: 0 20px 40px rgba(168, 85, 247, 0.3);
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #a855f7;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .skill-item {
+            background: rgba(168, 85, 247, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid #7c3aed;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            background: rgba(168, 85, 247, 0.2);
+            box-shadow: 0 10px 25px rgba(168, 85, 247, 0.3);
+        }
+
+        .skill-item h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 100px 0;
+        }
+
+        .project-category-card {
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid #7c3aed;
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+h
+        .project-category-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(168, 85, 247, 0.2);
+            border-color: #a855f7;
+        }
+
+        .project-category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .project-category-card:hover::before {
+            left: 100%;
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+
+        .project-category-card:hover .category-icon {
+            filter: grayscale(0%);
+        }
+
+        .project-category-card h3 {
+            color: #a855f7;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .project-category-card p {
+            margin-bottom: 1rem;
+            color: #cccccc;
+        }
+
+        .category-count {
+            background: rgba(168, 85, 247, 0.2);
+            color: #a855f7;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* Embedded Page Styles */
+        .embedded-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: none;
+            overflow-y: auto;
+        }
+
+        .embedded-page.active {
+            display: block;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .embedded-content {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 50%, #0a0a0a 100%);
+            border-radius: 20px;
+            border: 1px solid #7c3aed;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(168, 85, 247, 0.2);
+            border: 1px solid #7c3aed;
+            color: #a855f7;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(168, 85, 247, 0.3);
+            transform: scale(1.05);
+        }
+
+        .embedded-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #7c3aed;
+        }
+
+        .embedded-header h2 {
+            color: #a855f7;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .embedded-header p {
+            color: #cccccc;
+            font-size: 1.1rem;
+        }
+
+        .project-showcase {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .project-item {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #7c3aed;
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(168, 85, 247, 0.2);
+        }
+
+        .project-item h4 {
+            color: #a855f7;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .project-item .meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        .project-status {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
+            font-size: 0.8rem;
+        }
+
+        .project-status.in-progress {
+            background: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(168, 85, 247, 0.2);
+            color: #a855f7;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .project-details {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #333;
+        }
+
+        .project-details h5 {
+            color: #a855f7;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-details ul {
+            list-style: none;
+            padding-left: 1rem;
+        }
+
+        .project-details li {
+            margin-bottom: 0.5rem;
+            color: #cccccc;
+            position: relative;
+        }
+
+        .project-details li::before {
+            content: '•';
+            color: #a855f7;
+            position: absolute;
+            left: -1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(168, 85, 247, 0.1);
+            border-radius: 10px;
+            border: 1px solid #7c3aed;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            color: #a855f7;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #7c3aed;
+            border-radius: 8px;
+            color: #ffffff;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #a855f7;
+            box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: #000000;
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid #7c3aed;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content,
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .embedded-content {
+                margin: 1rem;
+                padding: 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: slideIn 0.8s ease-out;
+        }
+
+        /* Floating particles effect */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #a855f7;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">PAK</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Resume</a></li>
+		<li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <div class="hero-text">
+                    <h1>Princilla Abena Koranteng</h1>
+                    <h2>Data Analyst & Insights Specialist</h2>
+                    <p>Data Analyst & Educator | Founder, Data in Action Africa | Transforming complex data into actionable insights that drive business growth. Based in Ghana, I specialize in statistical analysis, data visualization, and predictive modeling to help YOU make data-driven decisions.</p>
+                    <a href="#projects" class="cta-button">See My Work</a>
+                </div>
+                <div class="hero-image">
+                    <div class="profile-image">PAK</div>
+                </div>
+            </div>
+        </div>
+        <!-- Floating particles -->
+        <div class="particle" style="top: 20%; left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="top: 60%; left: 80%; animation-delay: 2s;"></div>
+        <div class="particle" style="top: 80%; left: 20%; animation-delay: 4s;"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div>
+                    <p>With a passion for uncovering hidden patterns in data, I bring a unique blend of analytical rigor and creative problem-solving to every project. My expertise spans across various industries, helping businesses in Ghana and beyond leverage their data for competitive advantage.</p>
+                    <br>
+                    <p>I believe that every dataset tells a story, and my mission is to help organizations discover and act upon those stories to drive meaningful outcomes.</p>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-item" data-filter="python">
+                        <h3>Python & R</h3>
+                        <p>Advanced Analytics</p>
+                    </div>
+                    <div class="skill-item" data-filter="sql">
+                        <h3>SQL & NoSQL</h3>
+                        <p>Database Management</p>
+                    </div>
+                    <div class="skill-item" data-filter="visualization">
+                        <h3>Tableau & Power BI</h3>
+                        <p>Data Visualization</p>
+                    </div>
+                    <div class="skill-item" data-filter="ml">
+                        <h3>Machine Learning</h3>
+                        <p>Predictive Modeling</p>
+                    </div>
+                    <div class="skill-item" data-filter="excel">
+                        <h3>Excel & Google Sheets</h3>
+                        <p>Business Intelligence</p>
+                    </div>
+                    <div class="skill-item" data-filter="statistics">
+                        <h3>Statistical Analysis</h3>
+                        <p>Research & Insights</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            
+            <div class="projects-grid">
+                <div class="project-category-card" onclick="openEmbeddedPage('python')">
+                    <div class="category-icon">🐍</div>
+                    <h3>Python & R</h3>
+                    <p>Advanced Analytics</p>
+                    <div class="category-count">0 Projects</div>
+                </div>
+                <div class="project-category-card" onclick="openEmbeddedPage('sql')">
+                    <div class="category-icon">🗄️</div>
+                    <h3>SQL & NoSQL</h3>
+                    <p>Database Management</p>
+                    <div class="category-count">4 Projects</div>
+                </div>
+                <div class="project-category-card" onclick="openEmbeddedPage('visualization')">
+                    <div class="category-icon">📊</div>
+                    <h3>Tableau & Power BI</h3>
+                    <p>Data Visualization</p>
+                    <div class="category-count">6 Projects</div>
+                </div>
+                <div class="project-category-card" onclick="openEmbeddedPage('ml')">
+                    <div class="category-icon">🤖</div>
+                    <h3>Machine Learning</h3>
+                    <p>Predictive Modeling</p>
+                    <div class="category-count">4 Projects</div>
+                </div>
+                <div class="project-category-card" onclick="openEmbeddedPage('excel')">
+                    <div class="category-icon">📈</div>
+                    <h3>Excel & Google Sheets</h3>
+                    <p>Business Intelligence</p>
+                    <div class="category-count">3 Projects</div>
+                </div>
+                <div class="project-category-card" onclick="openEmbeddedPage('statistics')">
+                    <div class="category-icon">📉</div>
+                    <h3>Statistical Analysis</h3>
+                    <p>Research & Insights</p>
+                    <div class="category-count">4 Projects</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <div>
+                            <h3>Email</h3>
+                            <p>princilla.koranteng@email.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span>📱</span>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+233 XX XXX XXXX</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span>🔗</span>
+                        <div>
+                            <h3>LinkedIn</h3>
+                            <p>linkedin.com/in/princilla-koranteng</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <div>
+                            <h3>Location</h3>
+                            <p>Accra, Ghana</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Princilla Abena Koranteng. All rights reserved. | Transforming Data into Insights</p>
+        </div>
+    </footer>
+
+    <!-- Embedded Page -->
+    <div id="embeddedPage" class="embedded-page">
+        <div class="embedded-content">
+            <button class="close-btn" onclick="closeEmbeddedPage()">✕ Close</button>
+            <div class="embedded-header">
+                <h2 id="embeddedTitle"></h2>
+                <p id="embeddedDescription"></p>
+            </div>
+            <div id="embeddedProjects" class="project-showcase">
+                <!-- Projects will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Project data organized by category
+        const projectData = {
+            python: {
+                title: "Python & R - Advanced Analytics",
+                description: "Comprehensive data analysis projects using Python and R for statistical computing and advanced analytics",
+                projects: [
+                    {
+                        title: "Ghana Economic Growth Analysis",
+                        description: "Comprehensive analysis of Ghana's economic indicators over the past decade, identifying key growth drivers and providing recommendations for sustainable development.",
+                        date: "2024",
+                        status: "Completed",
+                        tags: ["Python", "Pandas", "Matplotlib", "Economic Data"],
+                        details: {
+                            overview: "This project analyzed Ghana's economic performance using multiple data sources including GDP, inflation, unemployment, and trade balance data.",
+                            methodology: [
+                                "Time series analysis using Python pandas and numpy",
+                                "Statistical correlation analysis between economic indicators",
+                                "Visualization of trends using matplotlib and seaborn",
+                                "Forecasting models using ARIMA and exponential smoothing"
+                            ],
+                            impact: "Provided actionable insights that contributed to policy recommendations for the Ministry of Finance"
+                        }
+                    },
+                    {
+                        title: "Healthcare Data Analysis",
+                        description: "Analysis of patient outcomes and treatment effectiveness using statistical methods, contributing to improved healthcare delivery and resource allocation.",
+                        date: "2024", 
+                        status: "Completed",
+                        tags: ["Python", "R", "Statistical Analysis", "Healthcare"],
+                        details: {
+                            overview: "Analyzed patient treatment outcomes across multiple healthcare facilities to identify patterns and improve care delivery.",
+                            methodology: [
+                                "Cleaned and processed patient data using Python pandas",
+                                "Performed statistical hypothesis testing in R",
+                                "Created predictive models for patient outcomes",
+                                "Developed automated reporting dashboards"
+                            ],
+                            impact: "Improved patient care protocols and reduced readmission rates by 15%"
+                        }
+                    },
+                    {
+                        title: "Financial Risk Assessment",
+                        description: "Built predictive models to assess credit risk for a microfinance institution, improving loan approval processes and reducing default rates by 23%.",
+                        date: "2023",
+                        status: "Completed",
+                        tags: ["Python", "Risk Modeling", "Financial Analytics"],
+                        details: {
+                            overview: "Developed machine learning models to predict loan default risk for a microfinance institution serving rural communities.",
+                            methodology: [
+                                "Feature engineering from customer financial data",
+                                "Implemented logistic regression and random forest models",
+                                "Cross-validation and model performance optimization",
+                                "Deployed model using Flask API"
+                            ],
+                            impact: "Reduced loan defaults by 23% while maintaining loan approval rates"
+                        }
+                    },
+                    {
+                        title: "Agricultural Yield Prediction",
+                        description: "Developed machine learning models to predict crop yields based on weather patterns and soil conditions, helping farmers optimize planting strategies.",
+                        date: "2024",
+                        status: "In Progress",
+                        tags: ["Python", "Scikit-learn", "Agriculture", "ML"],
+                        details: {
+                            overview: "Using satellite data and weather patterns to predict crop yields for smallholder farmers in Ghana.",
+                            methodology: [
+                                "Satellite imagery processing using Python",
+                                "Weather data integration from multiple sources",
+                                "Machine learning models for yield prediction",
+                                "Mobile app development for farmer access"
+                            ],
+                            impact: "Expected to help 500+ farmers optimize their planting decisions"
+                        }
+                    },
+                    {
+                        title: "Social Media Sentiment Analysis",
+                        description: "Analyzed public sentiment on social media platforms regarding government policies, providing insights for policy communication strategies.",
+                        date: "2023",
+                        status: "Completed",
+                        tags: ["Python", "NLP", "Sentiment Analysis", "Social Media"],
+                        details: {
+                            overview: "Analyzed public sentiment on Twitter and Facebook regarding government policies using natural language processing.",
+                            methodology: [
+                                "Web scraping using Python BeautifulSoup and Selenium",
+                                "Text preprocessing and tokenization",
+                                "Sentiment analysis using VADER and TextBlob",
+                                "Topic modeling with LDA"
+                            ],
+                            impact: "Provided insights that improved government communication strategies"
+                        }
+                    }
+                ]
+            },
+            sql: {
+                title: "SQL & NoSQL - Database Management",
+                description: "Database design, optimization, and analytics projects using SQL Server, MySQL, and NoSQL databases",
+                projects: [
+                    {
+                        title: "Sales Performance Dashboard Backend",
+                        description: "Designed and optimized database architecture for real-time sales tracking system, improving query performance by 60%.",
+                        date: "2024",
+                        status: "Completed",
+                        tags: ["SQL Server", "Performance Optimization", "ETL"],
+                        details: {
+                            overview: "Built robust database backend for real-time sales tracking across multiple retail locations.",
+                            methodology: [
+                                "Database schema design and normalization",
+                                "Stored procedures for complex business logic",
+                                "Query optimization and indexing strategies",
+                                "ETL pipelines using SSIS"
+                            ],
+                            impact: "Improved query performance by 60% and reduced report generation time from hours to minutes"
+                        }
+                    },
+                    {
+                        title: "Customer Data Warehouse",
+                        description: "Built comprehensive data warehouse integrating multiple data sources for 360-degree customer view and analytics.",
+                        date: "2023",
+                        status:
